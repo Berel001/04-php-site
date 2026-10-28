@@ -1,6 +1,10 @@
 <?php
+declare(strict_types=1);
+
 $pageTitle = 'About';
 require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
@@ -9,27 +13,24 @@ require_once __DIR__ . '/includes/header.php';
         <div class="container">
             <p class="eyebrow">A little about us</p>
             <h1>Good cleaning starts with good people.</h1>
-            <p>We make it easier to feel at home, at work, and everywhere in between.</p>
+            <p>Meet the people who make every visit feel thoughtful and dependable.</p>
         </div>
     </section>
 
-    <section class="section container split-section">
-        <div>
+    <section class="section container">
+        <div class="section-heading">
             <p class="eyebrow">Our approach</p>
             <h2>Care you can see. Service you can count on.</h2>
+            <p>Our team works carefully, communicates clearly, and helps each space feel just right.</p>
         </div>
-        <div class="prose">
-            <p>
-                Prime Cleaners Ltd is a fictional local cleaning business built around a
-                simple idea: a clean space can make the whole day feel better. We take
-                time to understand what matters to each customer and shape our service
-                around their space and routine.
-            </p>
-            <p>
-                Whether we are refreshing a busy family home or looking after a shared
-                workplace, we work carefully, communicate clearly, and leave things
-                feeling just right.
-            </p>
+        <div class="team-grid">
+            <?php foreach ($team as $member): ?>
+                <article class="team-card">
+                    <h3><?= e($member['name']) ?></h3>
+                    <p class="team-role"><?= e($member['role']) ?></p>
+                    <p><?= e($member['bio']) ?></p>
+                </article>
+            <?php endforeach; ?>
         </div>
     </section>
 </main>
